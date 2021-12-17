@@ -1,0 +1,17 @@
+{{$id := printf "%s%d" (delimit (shuffle (seq 1 9)) "") now.UnixNano}}
+{{with (.Get "id")}}{{$id = .}}{{end}}
+<figure>
+<svg id="svg-{{$id}}" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" role="img" aria-describedby="svg-{{$id}}-title svg-{{$id}}-desc" {{with (.Get "style")}}style="{{.}}"{{end}}>
+	<title id="svg-{{$id}}-title">{{.Get "title"}}</title>
+	{{with (.Get "desc")}}<desc id="svg-{{$id}}-desc">{{.}}</desc>{{end}}
+	{{ .Inner }}
+</svg>
+<figcaption>
+	<a href="#svg-{{$id}}">
+		Figure with identifier
+		<code>{{$id}}</code>
+	</a>:
+	<span>{{.Get "title"}}</span>
+	{{with (.Get "desc")}}<p>{{.}}</p>{{end}}
+</figcaption>
+</figure>

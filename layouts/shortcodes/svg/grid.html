@@ -1,0 +1,16 @@
+{{$width := 10 }}{{with .Get "width"}}{{$width = .}}{{end}}
+{{$height := 10 }}{{with .Get "height"}}{{$height = .}}{{end}}
+{{$weight := 1 }}{{with .Get "weight"}}{{$weight = .}}{{end}}
+{{$subWidth := 5 }}{{with .Get "subWidth"}}{{$subWidth = .}}{{end}}
+{{$subHeight := 5 }}{{with .Get "subHeight"}}{{$subHeight = .}}{{end}}
+{{$subWeight := 1 }}{{with .Get "subWeight"}}{{$subWeight = .}}{{end}}
+<defs>
+	<pattern id="smallGrid" width="{{$subWidth}}" height="{{$subHeight}}" patternUnits="userSpaceOnUse">
+		<path d="M {{$subWidth}} 0 L 0 0 0 {{$subHeight}}" fill="none" stroke="gray" stroke-width="{{$subWeight}}"/>
+	</pattern>
+	<pattern id="grid" width="{{$width}}" height="{{$height}}" patternUnits="userSpaceOnUse">
+		<rect width="{{$width}}" height="{{$height}}" fill="url(#smallGrid)"/>
+		<path d="M {{$width}} 0 L 0 0 0 {{$height}}" fill="none" stroke="gray" stroke-width="{{$weight}}"/>
+	</pattern>
+</defs>
+<rect width="100%" height="100%" fill="url(#grid)" />

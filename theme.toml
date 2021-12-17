@@ -1,0 +1,9 @@
+name = "xyi"
+license = "MIT"
+licenselink = "https://github.com/colourdelete/xyi/blob/main/LICENSE"
+description = "A theme for Hugo designed for documentation"
+homepage = "https://github.com/colourdelete/xyi"
+
+[author]
+  name = "Ken Shibata"
+  homepage = "https://github.com/colourdelete"

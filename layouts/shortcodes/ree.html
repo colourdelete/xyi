@@ -1,0 +1,10 @@
+{{$path := (.Get 0)}}
+{{$frag := (.Get 1)}}
+{{$name := (.Get 2)}}
+<a href="{{relref . $path}}{{with $frag}}#{{.}}{{end}}">
+	{{with $name}}
+	{{.}}
+	{{else}}
+	<code>{{$path}}{{with $frag}}#{{.}}{{end}}</code>
+	{{end}}
+</a>
