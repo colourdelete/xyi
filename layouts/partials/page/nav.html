@@ -1,28 +1,22 @@
 <div class="nav">
-	{{with .PrevInSection}}
-	<a class="item" href="{{.Permalink}}">← (previous) {{.Title}}</a>
-	{{end}}
-	{{with .NextInSection}}
-	<a class="item" href="{{.Permalink}}">→ (next) {{.Title}}</a>
-	{{end}}
-	{{with .Parent}}
-	<a class="item" href="{{.Permalink}}">↑ (parent) {{.Title}}</a>
-	<ul>
-	{{range .Pages}}
-		{{if eq . $}}
-		<li><span class="item current">{{.Title}}</span></li>
-		{{else}}
-		<li><a class="item" href="{{.Permalink}}">{{.Title}}</a></li>
-		{{end}}
-	{{end}}
-	</ul>
-	{{end}}
-	<ul>
-	
-	{{/* children */}}
-	<span class="item">↓ (children)</a>
-	{{range .Pages}}
-	<li><a class="item" href="{{.Permalink}}">{{.Title}}</a></li>
-	{{end}}
-	</ul>
+  {{with .PrevInSection}}
+  <a class="item" href="{{.Permalink}}">← (kouhai) {{.Title}}</a>
+  {{end}} {{with .NextInSection}}
+  <a class="item" href="{{.Permalink}}">→ (senpai) {{.Title}}</a>
+  {{end}} {{with .Parent}}
+  <a class="item" href="{{.Permalink}}">↑ (parent) {{.Title}}</a>
+  <ul>
+    {{range .Pages}} {{if eq . $}}
+    <li><span class="item current">{{.Title}}</span></li>
+    {{else}}
+    <li><a class="item" href="{{.Permalink}}">{{.Title}} {{partial "partials/ul" .}}</a></li>
+    {{end}} {{end}}
+  </ul>
+  {{end}}
+  <ul>
+    <span class="item">↓ (children)</span>
+    {{range .Pages}}
+    <li><a class="item" href="{{.Permalink}}">{{.Title}} {{partial "partials/ul" .}}</a></li>
+    {{end}}
+  </ul>
 </div>

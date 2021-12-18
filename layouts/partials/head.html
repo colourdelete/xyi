@@ -1,5 +1,6 @@
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <title>{{block "title" .}}{{.Site.Title}}{{end}}</title>
-<link rel="canonical" href="{{.Site.BaseURL}}">
-<link rel="stylesheet" href="{{relURL "css/index.css"}}">
-{{if .Site.Params.mathjax}}{{partial "partials/mathjax.html" .}}{{end}}
+<link rel="canonical" href="{{.Site.BaseURL}}" />
+<link rel="stylesheet" href="{{relURL "css/index.css"}}"> {{if
+.Site.Params.mathjax}}{{partial "partials/mathjax.html" .}}{{end}} <script
+										   type="module" src="{{relURL "js/quiz.js"}}"></script>

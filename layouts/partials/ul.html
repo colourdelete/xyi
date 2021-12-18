@@ -1,0 +1,6 @@
+<span class="tag w3-pale-yellow">
+  <code>
+    {{with .Params.unit}}u{{if eq . -1}}*{{else}}{{.}}{{end}}{{end}}
+    {{- with .Params.lesson}}l{{if eq . -1}}*{{else}}{{.}}{{end}}{{end}}
+  </code>
+</span>
