@@ -1,0 +1,27 @@
+[wordCount]
+  other = "{{.}}言葉"
+
+[readingTime]
+  other = "読書時間：{{.Count}}分"
+
+[page_prev]
+  other = "← {{.Title}}"
+
+[page_next]
+  other = "→ {{.Title}}"
+
+[page_up]
+  other = "↑ {{.Title}}"
+
+[page_down]
+  other = "↓ {{.Title}}"
+
+[buildInfo]
+  other = '''
+Built
+using <a href="https://github.com/gohugoio/hugo/releases/tag/v{{(hugo).Version}}">Hugo {{(hugo).Version}}</a>,
+and commit <abbr title="{{.GitInfo.Hash}}">{{.GitInfo.AbbreviatedHash}}</abbr>.
+'''
+
+[translations]
+  other = "他言語版"

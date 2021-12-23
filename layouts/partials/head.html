@@ -1,6 +1,8 @@
 <meta charset="utf-8" />
 <title>{{block "title" .}}{{.Site.Title}}{{end}}</title>
 <link rel="canonical" href="{{.Site.BaseURL}}" />
-<link rel="stylesheet" href="{{relURL "css/index.css"}}"> {{if
-.Site.Params.mathjax}}{{partial "partials/mathjax.html" .}}{{end}} <script
-										   type="module" src="{{relURL "js/quiz.js"}}"></script>
+<link rel="stylesheet" href="{{relURL "css/index.css"}}">
+{{if .Site.Params.mathjax}}{{partial "partials/mathjax" .}}{{end}}
+<script type="module" src="{{relURL "js/quiz.js"}}"></script>
+{{(hugo).Generator}}
+{{partial "partials/head/i18n" .}}

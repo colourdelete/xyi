@@ -12,6 +12,9 @@ nav {
   aside & {
     @extend .w3-bar-block;
   }
+  & section {
+    @extend .w3-padding;
+  }
 }
 
 .meta {
@@ -39,6 +42,25 @@ article#main {
 .tag {
   @extend .w3-tag;
   @extend .w3-round;
+}
+
+.position {
+  @extend .tag;
+  @extend .w3-pale-yellow;
+
+  font-weight: normal !important;
+  & .unit {
+    @extend .w3-text-deep-purple;
+  }
+  & .lesson {
+    @extend .w3-text-purple;
+  }
+  & .chapter {
+    @extend .w3-text-teal;
+  }
+  & .section {
+    @extend .w3-text-green;
+  }
 }
 
 .btn {
@@ -79,6 +101,6 @@ figure {
   }
 }
 
-figure {
-  @extend .w3-pale-yellow;
+footer {
+  @extend .w3-padding;
 }

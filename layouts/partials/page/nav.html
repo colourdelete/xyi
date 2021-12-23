@@ -1,22 +1,24 @@
 <div class="nav">
   {{with .PrevInSection}}
-  <a class="item" href="{{.Permalink}}">← (kouhai) {{.Title}}</a>
+  <a class="item" href="{{.Permalink}}">{{i18n "page_prev" .}}</a>
   {{end}} {{with .NextInSection}}
-  <a class="item" href="{{.Permalink}}">→ (senpai) {{.Title}}</a>
+  <a class="item" href="{{.Permalink}}">{{i18n "page_next" .}}</a>
   {{end}} {{with .Parent}}
-  <a class="item" href="{{.Permalink}}">↑ (parent) {{.Title}}</a>
+  <a class="item" href="{{.Permalink}}">{{i18n "page_up" .}}</a>
   <ul>
     {{range .Pages}} {{if eq . $}}
-    <li><span class="item current">{{.Title}}</span></li>
+    <li><span class="item current">{{.Title}} {{partial "partials/ul" .}}</span></li>
     {{else}}
     <li><a class="item" href="{{.Permalink}}">{{.Title}} {{partial "partials/ul" .}}</a></li>
     {{end}} {{end}}
   </ul>
   {{end}}
   <ul>
-    <span class="item">↓ (children)</span>
+  <span class="item">{{i18n "page_down" .}}</span>
     {{range .Pages}}
     <li><a class="item" href="{{.Permalink}}">{{.Title}} {{partial "partials/ul" .}}</a></li>
     {{end}}
   </ul>
+  {{partial "partials/footer" .}}
+  {{partial "partials/i18n" .}}
 </div>

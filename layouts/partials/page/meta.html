@@ -1,8 +1,8 @@
 <div class="meta">
   <p>
-    {{with .Date}}{{partial "partials/date" (dict "site" $.Site "date"
-    .)}}{{end}} • <span class="word-count">{{.WordCount}} Words</span>
+    {{with .Date}}{{partial "partials/date" .}}{{end}}
+    • <span class="word-count">{{i18n "wordCount" .WordCount}}</span>
+    • <span class="reading-time">{{i18n "readingTime" .ReadingTime}}</span>
   </p>
-  {{with .Params.unit}}<span class="tag w3-blue">Unit {{.}}</span>{{end}}
-  {{with .Params.lesson}}<span class="tag w3-purple">Lesson {{.}}</span>{{end}}
+  {{partial "partials/ul" .}}
 </div>

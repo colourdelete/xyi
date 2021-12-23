@@ -1,6 +1,8 @@
-<span class="tag w3-pale-yellow">
+<span class="position">
   <code>
-    {{with .Params.unit}}u{{if eq . -1}}*{{else}}{{.}}{{end}}{{end}}
-    {{- with .Params.lesson}}l{{if eq . -1}}*{{else}}{{.}}{{end}}{{end}}
+    <span class="unit">{{- with .Params.unit}}u{{if eq . -1}}*{{else}}{{.}}{{end}}{{end}}</span><span class="lesson">
+      {{- with .Params.lesson}}l{{if eq . -1}}*{{else}}{{.}}{{end}}{{end}}</span>,<span class="chapter">
+      {{- with .Params.chapter}}c{{if eq . -1}}*{{else}}{{.}}{{end}}{{end}}</span><span class="section">
+      {{- with .Params.section}}s{{if eq . -1}}*{{else}}{{.}}{{end}}{{end}}</span>
   </code>
 </span>

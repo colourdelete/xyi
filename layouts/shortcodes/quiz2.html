@@ -1,0 +1,45 @@
+{{$id := printf "%s%d" (delimit (shuffle (seq 1 9)) "") now.UnixNano}} {{with
+(.Get "id")}}{{$id = .}}{{end}} {{$qas := (split .Inner "\n\n")}}
+<div id="quiz-{{$id}}" class="quiz">
+  <a href="#quiz-{{$id}}"><b>Quiz</b></a
+  ><br />
+  <noscript> The quiz requires JavaScript to validate the answer(s). </noscript>
+  {{index $qas 0 | markdownify}}
+  <br />
+  <ol>
+    {{range $i, $qa := $qas}}
+    {{if ne $i 0}}
+    {{$qa2 := (split $qa "\n")}} {{$q := 0}} {{$a := 0}}
+    {{if eq $i 0}} {{$q = (index $qa2 1)}} {{$a = (index $qa2 2)}}
+    {{else}} {{$q = (index $qa2 0)}} {{$a = (index $qa2 1)}}
+    {{end}}
+    <li>
+      {{$q|safeHTML}}
+      <span id="quiz-{{$id}}-s{{$i}}" role="status"></span>
+      <br />
+      <script type="module">
+        import quiz from "/mpm2dp-0a/js/quiz.js";
+        import cyrb53 from '/mpm2dp-0a/js/cyrb53.js';
+        document.getElementById("quiz-{{$id}}-i{{$i}}").addEventListener('input',  quiz({{$id}}, {{$i}}, cyrb53({{$a}})));
+        console.log(cyrb53({{$a}}));
+      </script>
+    </li>
+    {{end}} {{end}}
+  </ol>
+  <script>
+    const correctHash = '{{.Get "answer"}}';
+    document
+      .getElementById("quiz-{{$id}}-submit")
+      .addEventListener("click", () => {
+        const answer = document.getElementById("quiz-{{$id}}-input").value;
+        const hash = cyrb53(answer);
+        const next = document.getElementById("quiz-{{$id}}-next");
+        if (hash == correctHash) {
+          next.style.display = "block";
+          next.href = `next/${hash}`;
+        } else {
+          next.style.display = "none";
+        }
+      });
+  </script>
+</div>

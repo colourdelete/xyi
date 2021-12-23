@@ -1,0 +1,7 @@
+{{- $id := printf "%s%d" (delimit (shuffle (seq 1 9)) "") now.UnixNano -}}
+{{- with (.Get "id")}}{{$id = .}}{{end}} {{$qas := (split .Inner "\n\n") -}}
+{{- $choices := (.Get "choices") -}}
+{{- range $i, $choice := (split $choices " ") -}}
+<input id="quiz2-{{$id}}-{{$i}}" type="radio" name="{{$choice}}" value="{{$i}}"> {{$choice}}<br>
+<label for="quiz2-{{$id}}-{{$i}}">{{$choice}}</label>
+{{- end -}}
