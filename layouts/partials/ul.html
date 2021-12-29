@@ -1,3 +1,9 @@
+{{if (or 
+	(ne nil .Params.unit)
+	(ne nil .Params.lesson)
+	(ne nil .Params.chapter)
+	(ne nil .Params.section)
+)}}
 <span class="position">
   <code>
     <span class="unit">{{- with .Params.unit}}u{{if eq . -1}}*{{else}}{{.}}{{end}}{{end}}</span><span class="lesson">
@@ -6,3 +12,4 @@
       {{- with .Params.section}}s{{if eq . -1}}*{{else}}{{.}}{{end}}{{end}}</span>
   </code>
 </span>
+{{end}}
