@@ -1,0 +1,2 @@
+{{$path := (.Get 0)}} {{$frag := (.Get 1)}}
+{{relref . $path}}{{with $frag}}#{{.}}{{end}}
