@@ -20,8 +20,7 @@
 
 [buildInfo]
   other = '''
-Built
-using <a href="https://github.com/gohugoio/hugo/releases/tag/v{{(hugo).Version}}">Hugo {{(hugo).Version}}</a>,
+Built using <a href="https://gohugo.io">Hugo</a>
 and commit <abbr title="{{.GitInfo.Hash}}">{{.GitInfo.AbbreviatedHash}}</abbr>.
 '''
 

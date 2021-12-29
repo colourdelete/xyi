@@ -18,9 +18,8 @@
 
 [buildInfo]
   other = '''
-Built
-using <a href="https://github.com/gohugoio/hugo/releases/tag/v{{(hugo).Version}}">Hugo {{(hugo).Version}}</a>,
-and commit <abbr title="{{.GitInfo.Hash}}">{{.GitInfo.AbbreviatedHash}}</abbr>.
+此の頁は<a href="https://gohugo.io">Hugo</a>を使って作成されました。
+コミット：<abbr title="{{.GitInfo.Hash}}">{{.GitInfo.AbbreviatedHash}}</abbr>
 '''
 
 [translations]
