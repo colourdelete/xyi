@@ -1,8 +1,7 @@
 {{$id := printf "%s%d" (delimit (shuffle (seq 1 9)) "") now.UnixNano}} {{with
 (.Get "id")}}{{$id = .}}{{end}} {{$qas := (split .Inner "\n\n")}}
 <div id="quiz-{{$id}}" class="quiz">
-  <a href="#quiz-{{$id}}"><b>Quiz</b></a
-  ><br />
+  <a href="#quiz-{{$id}}"><b>Quiz</b></a><br />
   <noscript> The quiz requires JavaScript to validate the answer(s). </noscript>
   {{index $qas 0 | markdownify}}
   <br />
@@ -13,10 +12,12 @@
     {{if eq $i 0}} {{$q = (index $qa2 1)}} {{$a = (index $qa2 2)}}
     {{else}} {{$q = (index $qa2 0)}} {{$a = (index $qa2 1)}}
     {{end}}
+    {{$h := sha256 $a}}
     <li>
       <label for="quiz-{{$id}}-i{{$i}}">{{$q | safeHTML}}</label>
       <input id="quiz-{{$id}}-i{{$i}}" />
       <span id="quiz-{{$id}}-s{{$i}}" role="status"></span>
+      <noscript>The SHA-256 hash of the answer is <pre>{{$h}}</pre>.</noscript>
       <br />
     </li>
     {{end}}
@@ -25,7 +26,6 @@
   Final answer code: <code><span id="quiz-{{$id}}-total" role="status"><i>enter an answer</i></span></code>
   <script type="module">
     import { quiz, quizzes } from "/mpm2dp-0a/js/quiz.js";
-    import cyrb53 from '/mpm2dp-0a/js/cyrb53.js';
 
     {{range $i, $qa := $qas}}
     {{if ne $i 0}}
@@ -33,9 +33,10 @@
     {{if eq $i 0}} {{$q = (index $qa2 1)}} {{$a = (index $qa2 2)}}
     {{else}} {{$q = (index $qa2 0)}} {{$a = (index $qa2 1)}}
     {{end}}
+    {{$h := sha256 $a}}
     {{$var := printf "quiz_%s_i%d" $id $i | safeJS}}
     const {{$var}} = document.getElementById("quiz-{{$id}}-i{{$i}}");
-    {{$var}}.addEventListener('input', quiz({{$id}}, {{$i}}, cyrb53({{$a}})));
+    {{$var}}.addEventListener('input', quiz({{$id}}, {{$i}}, "{{$h}}"));
     {{end}}
     {{end}}
 
