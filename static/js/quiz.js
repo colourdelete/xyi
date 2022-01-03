@@ -15,16 +15,15 @@ async function digestMessage(message) {
 function quiz(id, i, ans) {
   const ie = document.getElementById(`quiz-${id}-i${i}`);
   const se = document.getElementById(`quiz-${id}-s${i}`);
-  return () => digestMessage(ie.value).then((hash) => se.innerText = hash === ans ? "✓" : "✗");
+  return async () => {
+    se.innerText = (await digestMessage(ie.value)) === ans ? "✓" : "✗";
+  }
 }
 
 function quizzes(es, target) {
-  return () => {
-    let total = "";
-    es.forEach((e) => {
-      total += digestMessage(e.value);
-    });
-    target.innerText = digestMessage(total);
+  return async () => {
+    const total = es.map(async (e) => await digestMessage(e.value));
+    target.innerText = await digestMessage(total);
   };
 }
 
