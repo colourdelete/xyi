@@ -1,5 +1,7 @@
-{{$id := printf "%s%d" (delimit (shuffle (seq 1 9)) "") now.UnixNano}} {{with
-(.Get "id")}}{{$id = .}}{{end}} {{$qas := (split .Inner "\n\n")}}
+{{$id := printf "%s%d" (delimit (shuffle (seq 1 9)) "") now.UnixNano}} {{with (.Get "id")}}{{$id = .}}{{end}}
+{{$root := (split .Inner "\n\n\n")}}
+{{$qas := (split (index $root 0) "\n\n")}}
+{{$expl := (index $root 1)}}
 <div id="quiz-{{$id}}" class="quiz">
   <a href="#quiz-{{$id}}"><b>Quiz</b></a><br />
   <noscript> The quiz requires JavaScript to validate the answer(s). </noscript>
@@ -24,6 +26,12 @@
     {{end}}
   </ol>
   Final answer code: <code><span id="quiz-{{$id}}-total" role="status"><i>enter an answer</i></span></code>
+  {{if ne $expl nil}}
+    <details>
+    <summary>{{i18n "explanation"}}</summary>
+      {{$expl | markdownify}}
+    </details>
+  {{end}}
   <script type="module">
     import { quiz, quizzes } from "/mpm2dp-0a/js/quiz.js";
 

@@ -27,3 +27,6 @@ and commit <abbr title="{{.GitInfo.Hash}}">{{.GitInfo.AbbreviatedHash}}</abbr>.
 [translations]
   one = "Translation"
   other = "Translations"
+
+[explanation]
+  other = "Explanation"
