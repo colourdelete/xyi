@@ -22,7 +22,7 @@ function quiz(id, i, ans) {
 
 function quizzes(es, target) {
   return async () => {
-    const total = es.map(async (e) => await digestMessage(e.value));
+    const total = await Promise.all(es.map(async (e) => await digestMessage(e.value)));
     target.innerText = await digestMessage(total);
   };
 }
