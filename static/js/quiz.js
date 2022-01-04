@@ -12,10 +12,11 @@ async function digestMessage(message) {
   return Array.from(new Uint8Array(hash)).map((b) => b.toString(16).padStart(2, '0')).join('');
 }
 
-function quiz(id, i, ans) {
+function quiz(id, i, ans, page) {
   const ie = document.getElementById(`quiz-${id}-i${i}`);
   const se = document.getElementById(`quiz-${id}-s${i}`);
   return async () => {
+    localStorage.setItem(`${page}-quiz-${id}-i${i}`, ie.value);
     se.innerText = (await digestMessage(ie.value)) === ans ? "✓" : "✗";
   }
 }

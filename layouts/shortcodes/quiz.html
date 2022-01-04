@@ -35,16 +35,17 @@
   <script type="module">
     import { quiz, quizzes } from "/mpm2dp-0a/js/quiz.js";
 
+    const page = '{{$.Page.Permalink}}';
+
     {{range $i, $qa := $qas}}
-    {{if ne $i 0}}
-    {{$qa2 := (split $qa "\n")}} {{$q := 0}} {{$a := 0}}
+    {{if ne $i 0}} {{$qa2 := (split $qa "\n")}} {{$q := 0}} {{$a := 0}}
     {{if eq $i 0}} {{$q = (index $qa2 1)}} {{$a = (index $qa2 2)}}
     {{else}} {{$q = (index $qa2 0)}} {{$a = (index $qa2 1)}}
     {{end}}
     {{$h := sha256 $a}}
     {{$var := printf "quiz_%s_i%d" $id $i | safeJS}}
     const {{$var}} = document.getElementById("quiz-{{$id}}-i{{$i}}");
-    {{$var}}.addEventListener('input', quiz({{$id}}, {{$i}}, "{{$h}}"));
+    {{$var}}.addEventListener('input', quiz({{$id}}, {{$i}}, "{{$h}}", page));
     {{end}}
     {{end}}
 
