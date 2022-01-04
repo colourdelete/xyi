@@ -70,7 +70,7 @@
     {{else}} {{$q = (index $qa2 0)}} {{$a = (index $qa2 1)}}
     {{end}}
     {{$var := printf "quiz_%s_i%d" $id $i | safeJS}}
-    {{$var}}.addEventListener('input', quizzes({{$var2}}, document.getElementById("quiz-{{$id}}-total")));
+    {{$var}}.addEventListener('input', quizzes({{$var2}}, document.getElementById("quiz-{{$id}}-total"), {{$id}}, page));
     {{end}}
     {{end}}
   </script>
