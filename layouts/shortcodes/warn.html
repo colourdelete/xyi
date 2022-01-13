@@ -1,8 +1,8 @@
 {{$id := printf "%s%d" (delimit (shuffle (seq 1 9)) "") now.UnixNano}} {{with
 (.Get "id")}}{{$id = .}}{{end}}
-<div id="note-{{$id}}" class="box note">
-  <a href="#note-{{$id}}">
-    <b>Note</b>
+<div id="warn-{{$id}}" class="box warn">
+  <a href="#warn-{{$id}}">
+    <b>Warning</b>
   </a>
   {{.Inner}}
 </div>

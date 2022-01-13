@@ -80,6 +80,7 @@ a {
 .note,
 .eg,
 .quiz,
+.box,
 figure {
   @extend .w3-card;
   @extend .w3-round;
@@ -87,6 +88,9 @@ figure {
   @extend .w3-margin;
   &.note {
     @extend .w3-khaki;
+  }
+  &.warn {
+    @extend .w3-pale-yellow;
   }
   &.eg {
     @extend .w3-lime;

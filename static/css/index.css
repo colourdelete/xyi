@@ -1076,6 +1076,7 @@ aside {
 .w3-round, aside, .tag, .position, .btn, .note,
 .eg,
 .quiz,
+.box,
 figure,
 .w3-round-medium {
   border-radius: 4px;
@@ -1139,6 +1140,7 @@ figure,
 .w3-card, aside, .note,
 .eg,
 .quiz,
+.box,
 figure,
 .w3-card-2 {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
@@ -1413,6 +1415,7 @@ figure,
 .w3-margin, .note,
 .eg,
 .quiz,
+.box,
 figure {
   margin: 16px !important;
 }
@@ -1440,6 +1443,7 @@ figure {
 .w3-padding, nav section, .meta, article#main, .note,
 .eg,
 .quiz,
+.box,
 figure, footer {
   padding: 8px 16px !important;
 }
@@ -1626,6 +1630,7 @@ figure, footer {
 .w3-sand, .note > figcaption.desc,
 .eg > figcaption.desc,
 .quiz > figcaption.desc,
+.box > figcaption.desc,
 figure > figcaption.desc,
 .w3-hover-sand:hover {
   color: #000 !important;
@@ -1693,7 +1698,11 @@ figure > figcaption.desc,
   background-color: #ddffdd !important;
 }
 
-.w3-pale-yellow, .position,
+.w3-pale-yellow, .position, .note.warn,
+.eg.warn,
+.quiz.warn,
+.box.warn,
+figure.warn,
 .w3-hover-pale-yellow:hover {
   color: #000 !important;
   background-color: #ffffcc !important;
