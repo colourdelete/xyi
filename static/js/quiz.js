@@ -19,8 +19,17 @@ function quiz(id, i, ans, page) {
   const key = `${page}-quiz-${id}-i${i}`;
   const value = localStorage.getItem(key);
   let saved = false;
+  const elem = document.createElement('img');
+  elem.src = '/mpm2dp-0a/orange.jpg';
+  elem.style.width = '100%';
   const handler = async () => {
-    se.innerText = ((await digestMessage(ie.value)) === ans ? "✓" : "✗") + (saved ? "remembered" : "");
+    const correct = (await digestMessage(ie.value)) === ans;
+    se.innerText = (correct ? "✓" : "✗") + (saved ? "remembered" : "");
+    if (!correct) {
+      se.appendChild(elem);
+    } else {
+      se.removeChild(elem);
+    }
     saved = false;
   };
   if (value !== null) {
